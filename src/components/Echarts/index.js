@@ -37,7 +37,10 @@ class ECharts extends Component {
         source: []
       },
       xAxis: {
-        name: '集资数'
+        name: '集资数',
+        axisLabel: {
+          formatter: '¥{value}'
+        }
       },
       yAxis: {
         type: 'category'
