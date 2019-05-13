@@ -1,0 +1,108 @@
+{
+  "id": "$root",
+  "type": "object",
+  "title": "程序配置",
+  "description": "程序配置",
+  "properties": {
+    "qq": {
+      "id": "$root/properties/qq",
+      "type": "number",
+      "title": "QQ号",
+      "description": "填写机器人的QQ号"
+    },
+    "groupNumber": {
+      "id": "$root/properties/groupNumber",
+      "type": "number",
+      "title": "群号",
+      "description": "填写监听群号"
+    },
+    "port": {
+      "id": "$root/properties/port",
+      "type": "number",
+      "title": "socket端口号",
+      "description": "填写websocket的监听端口号"
+    },
+    "savePath": {
+      "id": "$root/properties/savePath",
+      "type": "string",
+      "title": "图片保存位置",
+      "description": "选择图片保存位置",
+      "$componentType": "savePath"
+    },
+    "width": {
+      "id": "$root/properties/width",
+      "type": "number",
+      "title": "图表宽度",
+      "description": "填写图表宽度"
+    },
+    "height": {
+      "id": "$root/properties/height",
+      "type": "number",
+      "title": "图表高度",
+      "description": "填写图表高度"
+    },
+    "colorFrom": {
+      "id": "$root/properties/colorFrom",
+      "type": "string",
+      "title": "图表颜色渐变最低",
+      "description": "配置颜色最低",
+      "$defaultValue": "#eb2f96"
+    },
+    "colorTo": {
+      "id": "$root/properties/colorTo",
+      "type": "string",
+      "title": "图表颜色渐变最高",
+      "description": "配置颜色最高",
+      "$defaultValue": "#1890ff"
+    },
+    "template": {
+      "id": "$root/properties/template",
+      "type": "string",
+      "title": "发送信息模板",
+      "description": "填写发送信息模板",
+      "$componentType": "textArea"
+    },
+    "modianId": {
+      "id": "$root/properties/modianId",
+      "type": "array",
+      "title": "参与PK的摩点ID",
+      "description": "填写摩点ID",
+      "items": {
+        "id": "$root/properties/modianId/items",
+        "type": "object",
+        "title": "摩点ID",
+        "description": "填写摩点信息",
+        "properties": {
+          "title": {
+            "id": "$root/properties/modianId/items/properties/title",
+            "type": "string",
+            "title": "摩点标题",
+            "description": "填写摩点标题"
+          },
+          "id": {
+            "id": "$root/properties/modianId/items/properties/id",
+            "type": "number",
+            "title": "摩点ID",
+            "description": "填写单个摩点ID"
+          }
+        },
+        "required": [
+          "title",
+          "id"
+        ]
+      }
+    }
+  },
+  "required": [
+    "qq",
+    "groupName",
+    "port",
+    "savePath",
+    "width",
+    "height",
+    "template",
+    "colorFrom",
+    "colorTo",
+    "modianId"
+  ]
+}

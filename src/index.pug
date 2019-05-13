@@ -1,0 +1,11 @@
+- var imports = require('./imports');
+
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1')
+  body
+    div.app#app
+    if htmlWebpackPlugin.options.mode === 'development'
+      script(type='text/javascript' src=imports.dll)

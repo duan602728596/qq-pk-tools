@@ -1,0 +1,66 @@
+{
+  "name": "qq-charts-tools",
+  "scripts": {
+    "runel:dev": "cross-env NODE_ENV=development electron ./",
+    "runel:pro": "cross-env NODE_ENV=production electron ./",
+    "dll": "milktea dll",
+    "start": "npm run clean:build && cross-env NODE_ENV=development milktea start",
+    "build": "npm run clean:build && cross-env NODE_ENV=production milktea build",
+    "clean:build": "rimraf ./build",
+    "npm:i": "npm install --production",
+    "yarn:i": "yarn install --production=true --pure-lockfile",
+    "eslint": "eslint ./src --fix",
+    "case-check": "case-check --dir=\"./src\" --css",
+    "update": "milktea update"
+  },
+  "main": "./bin/main.js",
+  "dependencies": {
+    "electron": "^5.0.1",
+    "fs-extra": "^8.0.0",
+    "nunjucks": "^3.2.0"
+  },
+  "devDependencies": {
+    "@48/modian-query-sign": "github:duan602728596/modian-query-sign",
+    "@sweet/milktea": "github:duan602728596/sweet#build-milktea",
+    "@sweet/milktea-cli": "github:duan602728596/sweet#build-milktea-cli",
+    "@sweet/util-tools": "github:duan602728596/sweet#build-util-tools",
+    "antd": "^3.17.0",
+    "antd-schema-form": "^2.3.0",
+    "babel-eslint": "^10.0.1",
+    "babel-plugin-import": "^1.11.0",
+    "babel-plugin-import-components-style": "^0.1.0",
+    "classnames": "^2.2.6",
+    "commitizen": "^3.1.1",
+    "cross-env": "^5.2.0",
+    "cz-conventional-changelog": "^2.1.0",
+    "echarts": "^4.2.1",
+    "es-module-path-case-check": "^1.4.0",
+    "eslint": "^5.16.0",
+    "eslint-plugin-react": "^7.13.0",
+    "husky": "^2.2.0",
+    "immutable": "^4.0.0-rc.12",
+    "lint-staged": "^8.1.6",
+    "moment": "^2.24.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-redux": "^7.0.3",
+    "react-router-dom": "^5.0.0",
+    "redux": "^4.0.1",
+    "redux-actions": "^2.6.5",
+    "redux-immutable": "^4.0.0",
+    "redux-thunk": "^2.3.0",
+    "reselect": "^4.0.0",
+    "rimraf": "^2.6.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
