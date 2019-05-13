@@ -82,7 +82,7 @@ class Index extends Component {
 
       const text = nunjucks.renderString(coolQ.options.template, {
         modian: result,
-        chart: `[CQ:image,file=${ filePath }]`
+        chart: `[CQ:image,file=${ path.normalize(filePath) }]`
       });
 
       // 构建发送模板
