@@ -42,7 +42,7 @@ module.exports = {
         }
       ]
     ],
-    exclude: /node_modules[\\/](?!antd-schema-form)/
+    exclude: /node_modules[\\/](?!_?antd-schema-form)/
   },
   sass: { include: /src/ },
   css: {
@@ -51,7 +51,7 @@ module.exports = {
       // https://github.com/ant-design/ant-design/blob/master/components/style/themes/default.less
       '@primary-color': '#fadb14'
     },
-    include: /node_modules[\\/]antd/
+    include: /node_modules[\\/]_?antd/
   },
   html: [
     { template: path.join(__dirname, 'src/index.pug') }
