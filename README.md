@@ -13,8 +13,8 @@ QQ群pk展示信息，可以发送可视化图表。需要酷Qpro。
     
     ```
     信息：
-    {{ modian[0].title }}: {{ modian[0].already_raised}}
-    {{ modian[1].title }}: {{ modian[1].already_raised}} {{ chart }}
+    {{ modian[0].title }}: {{ modian[0].already_raised }}
+    {{ modian[1].title }}: {{ modian[1].already_raised }}{{ chart }}
     ```
     
     * modian：摩点信息数组，title是标题，其他相关字段为摩点接口的返回值字段
