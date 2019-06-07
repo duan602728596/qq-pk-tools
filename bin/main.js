@@ -9,7 +9,7 @@ function createWindow() {
   win = new BrowserWindow({
     width: 1400,
     height: 800,
-    icon: path.join(__dirname, '../titleBarIcon.png'),
+    // icon: path.join(__dirname, '../titleBarIcon.png'),
     webPreferences: {
       nodeIntegration: true
     }
@@ -20,7 +20,7 @@ function createWindow() {
   }
 
   win.loadURL(url.format({
-    pathname: path.join(__dirname, '../build/index.html'),
+    pathname: path.join(__dirname, '../dist/index.html'),
     protocol: 'file:',
     slashes: true
   }));

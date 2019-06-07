@@ -12,12 +12,7 @@ yarn-error.log
 app/.idea
 
 # webpack
-.happypack
-.dll
-build
+dist
 
 # babel
-.babelCache
-
-# terser
-.terserCache
+.sweet/*
