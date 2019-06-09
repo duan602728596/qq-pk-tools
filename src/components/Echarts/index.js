@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import echarts from 'echarts/lib/echarts';
 import 'echarts/lib/chart/bar';
 import 'echarts/lib/component/visualMap';
+import datasetEncodeOptions from './datasetEncode';
 
 class ECharts extends Component {
   static propTypes = {
@@ -32,40 +33,7 @@ class ECharts extends Component {
   initCharts() {
     const chart = echarts.init(this.dom.current);
 
-    const options = {
-      dataset: {
-        source: []
-      },
-      xAxis: {
-        name: '集资数',
-        axisLabel: {
-          formatter: '¥{value}'
-        }
-      },
-      yAxis: {
-        type: 'category'
-      },
-      visualMap: {
-        show: false,
-        min: 10,
-        max: 100000,
-        dimension: 0,
-        inRange: {
-          color: ['#eb2f96', '#1890ff']
-        }
-      },
-      series: [
-        {
-          type: 'bar',
-          encode: {
-            x: 'amount',
-            y: 'product'
-          }
-        }
-      ],
-      animationDuration: 0,
-      animationDurationUpdate: 0
-    };
+    const options = datasetEncodeOptions;
 
     chart.setOption(options);
     this.setState({ chart });
