@@ -10,7 +10,7 @@ import style from './style.sass';
 import { setCoolQ } from '../reducer/reducer';
 import ECharts from '../../../components/Echarts/index';
 import CoolQ from '../../../components/coolQ/CoolQ';
-import { requestModianInformation } from './request';
+import { requestModianInformation, requestModianOrders } from './request';
 const path = global.require('path');
 const nunjucks = global.require('nunjucks');
 const fse = global.require('fs-extra');
@@ -198,6 +198,28 @@ class Index extends Component {
       }
     });
   };
+
+  // 请求订单数据
+  async getModianOrdersData(pro_id) {
+    const result = [];
+    const continues = true;
+    let i = 1;
+
+    while (continues) {
+      const res = await requestModianOrders(pro_id, i);
+      const { status, data } = await res.json();
+
+      if (status !== '0' || data.length === 0) {
+        break;
+      } else {
+        result.push(data);
+      }
+
+      i += 1;
+    }
+
+    return result;
+  }
 
   render() {
     const { coolQ } = this.props;

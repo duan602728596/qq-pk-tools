@@ -17,3 +17,21 @@ export function requestModianInformation(pro_id) {
     body: querystring.stringify({ ...body, sign })
   });
 }
+
+/**
+ * 请求摩点的订单
+ * @param { string } pro_id: 项目id
+ * @param { number } page: 分页
+ */
+export function requestModianOrders(pro_id, page = 1) {
+  const body = { page, pro_id, sort_by: 1 };
+  const sign = modianQuerySign(body);
+
+  return fetch('https://wds.modian.com/api/project/sorted_orders', {
+    method: 'POST',
+    headers: {
+      'Content-type': 'application/x-www-form-urlencoded'
+    },
+    body: querystring.stringify({ ...body, sign })
+  });
+}
