@@ -1,4 +1,10 @@
 /* 堆叠条形图 */
+const name = [
+  ['左嘉欣', '赖梓惜'],
+  ['王诗蒙', '卢天惠'],
+  ['顼凘炀', '赵天杨']
+];
+
 const options = {
   xAxis: {
     type: 'value'
@@ -17,13 +23,13 @@ const options = {
           show: true,
           position: 'insideRight',
           formatter(params) {
-            console.log('主将', params);
+            const { dataIndex, seriesIndex } = params;
 
-            return `主将：¥${ params.value }`;
+            return `【主将】${ name[dataIndex][seriesIndex] }：¥${ params.value }`;
           }
         }
       },
-      data: [320, 302, 301],
+      data: [0, 0, 0],
       color: '#eb2f96'
     },
     {
@@ -35,13 +41,13 @@ const options = {
           show: true,
           position: 'insideRight',
           formatter(params) {
-            console.log('副将', params);
+            const { dataIndex, seriesIndex } = params;
 
-            return `副将：¥${ params.value }`;
+            return `【副将】${ name[dataIndex][seriesIndex] }：¥${ params.value }`;
           }
         }
       },
-      data: [120, 132, 101],
+      data: [0, 0, 0],
       color: '#1890ff'
     }
   ]
