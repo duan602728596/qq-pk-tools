@@ -7,7 +7,10 @@ const name = [
 
 const options = {
   xAxis: {
-    type: 'value'
+    type: 'value',
+    axisLabel: {
+      formatter: '¥{value}'
+    }
   },
   yAxis: {
     type: 'category',
