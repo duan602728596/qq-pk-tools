@@ -30,7 +30,7 @@ const options = {
       label: {
         normal: {
           show: true,
-          position: 'insideRight',
+          position: 'right',
           formatter(params) {
             return `¥${ params.value[0] }`;
           }
