@@ -1,3 +1,5 @@
+const schedule = global.require('node-schedule');
+
 class CoolQ {
   constructor(options, commandCallback) {
     // QQ群号
@@ -14,6 +16,13 @@ class CoolQ {
     this.apiIo = new WebSocket(`ws://127.0.0.1:${ options.port }/api`);
 
     this.eventIo.addEventListener('message', this.handleListenerMessage);
+
+    // 定时发送
+    this.timer = undefined;
+
+    if (options.timer && commandCallback[options.timerCommand] && options.scheduleOptions) {
+      this.timer = schedule.scheduleJob(options.scheduleOptions, commandCallback[options.timerCommand]);
+    }
   }
 
   // 监听
@@ -52,6 +61,10 @@ class CoolQ {
     this.eventIo.removeEventListener('message', this.handleListenerMessage);
     this.eventIo.close();
     this.apiIo.close();
+
+    if (this.timer) {
+      this.timer.cancel();
+    }
   }
 }
 
