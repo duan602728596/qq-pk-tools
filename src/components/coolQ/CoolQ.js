@@ -2,6 +2,8 @@ const schedule = global.require('node-schedule');
 
 class CoolQ {
   constructor(options, commandCallback) {
+    const _this = this;
+
     // QQ群号
     this.options = options;
 
@@ -21,7 +23,9 @@ class CoolQ {
     this.timer = undefined;
 
     if (options.timer && commandCallback[options.timerCommand] && options.scheduleOptions) {
-      this.timer = schedule.scheduleJob(options.scheduleOptions, commandCallback[options.timerCommand]);
+      this.timer = schedule.scheduleJob(options.scheduleOptions, function() {
+        commandCallback[options.timerCommand](_this);
+      });
     }
   }
 
