@@ -31,7 +31,7 @@ export async function requestModianInformationNoIdol(modianId) {
     body: `pro_id=${ modianId }`
   });
   const { data } = await res.json();
-  const info = data.data.product_info;
+  const info = data.product_info;
 
   return {
     title: info.name,                  // 标题
