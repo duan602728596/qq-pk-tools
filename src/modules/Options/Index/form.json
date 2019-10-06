@@ -62,6 +62,25 @@
       "description": "填写发送信息模板",
       "$componentType": "textArea"
     },
+    "timer": {
+      "id": "$root/properties/timer",
+      "type": "boolean",
+      "title": "是否定时发送消息",
+      "description": "是否定时发送消息"
+    },
+    "timerCommand": {
+      "id": "$root/properties/timerCommand",
+      "type": "string",
+      "title": "定时发送消息的命令（一版不需要配置）",
+      "description": "定时发送消息的命令",
+      "$defaultValue": "pk"
+    },
+    "scheduleOptions": {
+      "id": "$root/properties/scheduleOptions",
+      "type": "string",
+      "title": "node-schedule定时发送消息配置",
+      "description": "是否定时发送消息"
+    },
     "modianId": {
       "id": "$root/properties/modianId",
       "type": "array",

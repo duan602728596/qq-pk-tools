@@ -26,6 +26,15 @@ const options = {
       encode: {
         x: 'amount',
         y: 'product'
+      },
+      label: {
+        normal: {
+          show: true,
+          position: 'right',
+          formatter(params) {
+            return `¥${ params.value[0] }`;
+          }
+        }
       }
     }
   ],
