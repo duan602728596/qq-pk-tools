@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import asyncModule from './asyncModule';
-import Index from '../modules/Index/Layout';
-import Options from '../modules/Options/Layout';
+import Index from '../pages/Index/Layout';
+import Options from '../pages/Options/Layout';
 
 /* 路由模块 */
 class Routers extends Component {
