@@ -10,7 +10,7 @@ import style from './style.sass';
 import { setCoolQ } from '../reducer/reducer';
 import ECharts from '../../../components/Echarts/index';
 import CoolQ from '../../../components/coolQ/CoolQ';
-import { requestModianInformation, requestModianOrders } from './request';
+import { requestModianInformation, requestModianInformationNoIdol } from './request';
 const path = global.require('path');
 const nunjucks = global.require('nunjucks');
 const fse = global.require('fs-extra');
@@ -52,23 +52,44 @@ class Index extends Component {
   // pk命令
   async pkCallback(coolQ, dataJson) {
     try {
-      const queen = [];
-      const { modianId } = coolQ.options;
+      const { modianId, noIdol } = coolQ.options;
+      const proId = [];
 
       for (const item of modianId) {
-        queen.push(item.id);
+        proId.push(item.id);
       }
 
       // 请求数据
-      const res = await requestModianInformation(queen.join(','));
-      const { data } = await res.json();
       const result = [];
 
-      for (let i = 0, j = data.length; i < j; i++) {
-        const resItem = data[i];
+      if (noIdol) {
+        // 兼容非摩点应援项目
+        const queen = [];
 
-        resItem.title = modianId[i].title;
-        result.push(resItem);
+        for (const id of proId) {
+          queen.push(requestModianInformationNoIdol(id));
+        }
+
+        const res = await Promise.all(queen);
+
+        for (let i = 0, j = res.length; i < j; i++) {
+          const resItem = res[i];
+
+          resItem.title = modianId[i].title;
+          result.push(resItem);
+        }
+
+      } else {
+        // 摩点应援项目
+        const res = await requestModianInformation(proId.join(','));
+        const { data } = await res.json();
+
+        for (let i = 0, j = data.length; i < j; i++) {
+          const resItem = data[i];
+
+          resItem.title = modianId[i].title;
+          result.push(resItem);
+        }
       }
 
       // 渲染图表并将图表写入文件夹
@@ -198,28 +219,6 @@ class Index extends Component {
       }
     });
   };
-
-  // 请求订单数据
-  async getModianOrdersData(pro_id) {
-    const result = [];
-    const continues = true;
-    let i = 1;
-
-    while (continues) {
-      const res = await requestModianOrders(pro_id, i);
-      const { status, data } = await res.json();
-
-      if (status !== '0' || data.length === 0) {
-        break;
-      } else {
-        result.push(data);
-      }
-
-      i += 1;
-    }
-
-    return result;
-  }
 
   render() {
     const { coolQ } = this.props;

@@ -110,6 +110,12 @@
           "id"
         ]
       }
+    },
+    "noIdol": {
+      "id": "$root/properties/noIdol",
+      "type": "boolean",
+      "title": "是否为非应援项目",
+      "description": "是否为非应援项目"
     }
   },
   "required": [

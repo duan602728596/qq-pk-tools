@@ -19,19 +19,26 @@ export function requestModianInformation(pro_id) {
 }
 
 /**
- * 请求摩点的订单
- * @param { string } pro_id: 项目id
- * @param { number } page: 分页
+ * 请求摩点的项目信息
+ * @param { string } modianId: 项目id
  */
-export function requestModianOrders(pro_id, page = 1) {
-  const body = { page, pro_id, sort_by: 1 };
-  const sign = modianQuerySign(body);
-
-  return fetch('https://wds.modian.com/api/project/sorted_orders', {
+export async function requestModianInformationNoIdol(modianId) {
+  const res = await fetch('https://sapi.modian.com/v45/main/productInfo', {
     method: 'POST',
     headers: {
       'Content-type': 'application/x-www-form-urlencoded'
     },
-    body: querystring.stringify({ ...body, sign })
+    body: `pro_id=${ modianId }`
   });
+  const { data } = await res.json();
+  const info = data.data.product_info;
+
+  return {
+    title: info.name,                  // 标题
+    already_raised: info.backer_money, // 已打赏金额
+    goal: info.install_money,          // 目标
+    backer_count: info.backer_count,   // 集资人数
+    end_time: info.end_time,           // 结束时间
+    moxiId: info.moxi_post_id
+  };
 }
